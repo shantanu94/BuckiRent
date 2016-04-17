@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   get 'main/index'
 
@@ -7,6 +8,16 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'main#index'
+   get 'listing/list'
+   get 'listing/show'
+   get 'listing/new'
+   get 'listing/edit'
+   get 'listing/delete'
+   get 'listing/update'
+
+   post 'listing/create'
+   
+   patch 'listing/update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
