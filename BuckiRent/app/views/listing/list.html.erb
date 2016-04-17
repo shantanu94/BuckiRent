@@ -1,0 +1,14 @@
+<% if @listings.blank? %>
+<p>There are no listings currently in the system.</p>
+<% else %>
+<p>Listings</p>
+
+<ul id = "listings">
+  <% @listings.each do |listing| %>
+    <li><%= listing -%></li>
+  <% end %>
+</ul>
+
+<% end %>
+
+<p><%= link_to "Add New Book", {:action => 'new' }%></p>
