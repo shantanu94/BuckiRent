@@ -9,7 +9,13 @@ Rails.application.routes.draw do
    get 'listing/list'
    get 'listing/show'
    get 'listing/new'
+   get 'listing/edit'
+   get 'listing/delete'
+   get 'listing/update'
+
    post 'listing/create'
+   
+   patch 'listing/update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

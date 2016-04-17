@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417185227) do
+ActiveRecord::Schema.define(version: 20160417222526) do
 
   create_table "listings", force: :cascade do |t|
     t.string   "address"
@@ -20,9 +20,13 @@ ActiveRecord::Schema.define(version: 20160417185227) do
     t.string   "area"
     t.integer  "bed"
     t.integer  "bath"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "rent"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end
