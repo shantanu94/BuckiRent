@@ -6,63 +6,112 @@
 <% end %><br/>
 
 
-<button data-toggle="collapse" data-target="#advanced_search">Advanced Search</button>
-<div id ="advanced_search" class="collapse">
+<button data-toggle="collapse" data-target="#advanced_search_collapse">Advanced Search</button>
+<div id="advanced_search_collapse" class="collapse"><br/>
 
-<%= form_tag(nil, :method => "get", id: "advanced_search_form") do %>
-    <%= label_tag 'Advanced Search' %><br/>
-    <%= label_tag 'Title' %>
-    <%= text_field_tag :search_heading, params[:search_heading], placeholder: "Title" %><br/>
-    <%= label_tag 'Description' %>
-    <%= text_field_tag :search_description, params[:search_description], placeholder: "Description" %><br/>
-    <%= label_tag 'Address' %>
-    <%= text_field_tag :search_address, params[:search_address], placeholder: "Address" %><br/>
-    <%= label_tag 'Area' %>
-    <%= text_field_tag :search_area, params[:search_area], placeholder: "Area" %><br/>
-    <%= label_tag 'Beds' %>
-    <%= text_field_tag :search_bed, params[:search_bed], placeholder: "Beds" %><br/>
-    <%= label_tag 'Baths' %>
-    <%= text_field_tag :search_bath, params[:search_bath], placeholder: "Baths" %><br/>
-    <%= label_tag 'Rent' %>
-    <%= text_field_tag :search_rent, params[:search_rent], placeholder: "Rent" %><br/>
+  <%= form_tag(nil, :method => "get", id: "advanced_search_form") do %>
 
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Title' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_heading, params[:search_heading], placeholder: "Title" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Description' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_description, params[:search_description], placeholder: "Description" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Address' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_address, params[:search_address], placeholder: "Address" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Area' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_area, params[:search_area], placeholder: "Area" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Beds' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_bed, params[:search_bed], placeholder: "Beds" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Baths' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_bath, params[:search_bath], placeholder: "Baths" %><br/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1">
+          <%= label_tag 'Rent' %>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :search_rent, params[:search_rent], placeholder: "Rent" %><br/>
+        </div>
+      </div>
+
+
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
 
 </div>
 
 <% if @listings.blank? %>
-  <p>There are no listings currently in the system.</p>
+    <p>There are no listings currently in the system.</p>
 
 <% else %>
 
-  <hr>
+    <hr>
     <% @listings.each do |l| %>
-            <div class="listing">
-              <table>
-                <tr>
-                  <td>
-                    <%= image_tag l.photo.url %>
-                  </td>
-                  <td>
-                    <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
-                    <p><%= l.description %></p>
-                    Listing Details:
-                    <p>
-                      Address: <%= l.address %><br/>
-                      Area: <%= l.area %><br/>
-                      Bed/Bath: <%= l.bed %>/<%= l.bath %><br/>
-                      Rent: $<%= l.rent %>/month<br/>
-                      Owner: <%= l.user.email %><br/>
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <hr>
+        <div class="listing">
+          <table>
+            <tr>
+              <td>
+                <%= image_tag l.photo.url %>
+              </td>
+              <td>
+                <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
+                <p><%= l.description %></p>
+                Listing Details:
+                <p>
+                  Address: <%= l.address %><br/>
+                  Area: <%= l.area %><br/>
+                  Bed/Bath: <%= l.bed %>/<%= l.bath %><br/>
+                  Rent: $<%= l.rent %>/month<br/>
+                  Owner: <%= l.user.email %><br/>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <hr>
     <% end %>
 <% end %>
 
 <% if user_signed_in? %>
-  <p><%= link_to "Add A Listing", {:action => 'new' }%></p>
+    <p><%= link_to "Add A Listing", {:action => 'new'} %></p>
 <% end %>
