@@ -1,7 +1,15 @@
 class ListingController < ApplicationController
 
   def list
-    @listings = Listing.all
+    #@listings = Listing.all
+    @listings = Listing.search(params[:search])
+    # if params[:search]
+    #   @Listings = Listing.search(params[:search])
+    #   #@Listings = Listing.all
+    # else
+    #   @Listings = Listing.all
+    # end
+     # @listings = Listing.all
   end
 
   def mylist
