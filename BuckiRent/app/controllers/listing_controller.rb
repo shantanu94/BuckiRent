@@ -15,6 +15,10 @@ class ListingController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
 
+    @user = current_user
+
+    @listing.user = @user
+
     if @listing.save
       redirect_to :action => 'list'
     else

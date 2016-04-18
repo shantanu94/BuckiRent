@@ -4,24 +4,32 @@
 <h1>Listings</h1>
 <hr>
 
-
 <% @listings.each do |l| %>
   <div class ="listing">
-
-    <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
-    <p><%= l.description %></p>
-    Listing Details:
-    <p>
-      Address: <%= l.address %><br />
-      Area: <%= l.area %><br />
-      Bed/Bath: <%= l.bed %>/<%=l.bath%><br />
-      Rent: $<%= l.rent %>/month<br />
-    </p>
-    <%= l.photo.url %>
-    <%= image_tag l.photo.url %>
+    <table>
+      <tr>
+        <td>
+          <%= image_tag l.photo.url %>
+        </td>
+        <td>
+          <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
+          <p><%= l.description %></p>
+          Listing Details:
+          <p>
+            Address: <%= l.address %><br />
+            Area: <%= l.area %><br />
+            Bed/Bath: <%= l.bed %>/<%=l.bath%><br />
+            Rent: $<%= l.rent %>/month<br />
+            Owner: <%= l.user.email %><br />
+          </p>
+        </td>
+    </tr>
+    </table>
   </div>
   <hr>
 <% end %>
 <% end %>
 
+<% if user_signed_in? %>
 <p><%= link_to "Add A Listing", {:action => 'new' }%></p>
+<% end %>

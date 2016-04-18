@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417222526) do
+ActiveRecord::Schema.define(version: 20160418010319) do
 
   create_table "listings", force: :cascade do |t|
     t.string   "address"
@@ -27,7 +27,10 @@ ActiveRecord::Schema.define(version: 20160417222526) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
