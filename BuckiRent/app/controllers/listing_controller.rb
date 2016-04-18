@@ -4,6 +4,11 @@ class ListingController < ApplicationController
     @listings = Listing.all
   end
 
+  def mylist
+    @user = current_user
+    @listings = @user.listings
+  end
+
   def show
     @listing = Listing.find(params[:id])
   end

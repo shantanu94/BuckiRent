@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'main#index'
    get 'listing/list'
+   get 'listing/mylist'
    get 'listing/show'
    get 'listing/new'
    get 'listing/edit'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
    get 'listing/update'
 
    post 'listing/create'
-   
+
    patch 'listing/update'
 
   # Example of regular route:
