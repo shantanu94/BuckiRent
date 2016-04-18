@@ -4,12 +4,43 @@
 	<h1>BuckiRent</h1>
 	<h3>Browse properties available for rent all around Ohio State's Off-Campus area.</h3>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
 	<%= link_to "All Listings", listing_list_path %>
 	<% if user_signed_in? %>
 		<%= link_to "My Listings", listing_mylist_path %>
 	<% end %>
+
+	<div class="row">
+		<div class="col-md-4" >		
+		<a class="thumbnail" >
+			<%= image_tag "house1.jpg", :class => "img-rounded"%>
+			</a>
+			<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+		</div>
+	
+		<div class="col-md-4" >
+		<a class="thumbnail" >		
+			<%= image_tag "house2.jpg", :class => "img-rounded"%>
+			<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+		</a>
+		</div>
+		
+	</div>
+	<br><br>
+
+	<div class="row">
+		<div class="col-md-4" >		
+		<a class="thumbnail" >
+			<%= image_tag "house3.jpg", :class => "img-rounded"%>
+			<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+			</a>
+		</div>
+
+		<div class="col-md-4">
+		<a class="thumbnail" >	
+			<%= image_tag "house4.jpg", :class => "img-rounded"%>
+			<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+			</a>
+		</div>
+	</div>
 
 </body>
