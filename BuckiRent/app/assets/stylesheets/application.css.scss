@@ -1,8 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap/theme';
 
 .logo {
 	
 	width: 175px;
 	height: 50px;
+}
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
