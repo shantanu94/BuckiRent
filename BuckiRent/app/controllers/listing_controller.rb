@@ -2,10 +2,8 @@ class ListingController < ApplicationController
 
   def list
 
-    #@listings = Listing.search(params[:search])
     @listings = Listing.advancedSearch(params[:search_heading], params[:search_description], params[:search_address],
                                        params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent])
-
   end
 
   def mylist
