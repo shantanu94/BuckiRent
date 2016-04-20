@@ -6,5 +6,4 @@ class User < ActiveRecord::Base
   has_many :listings
   has_many :messages
 
-  acts_as_messageable
 end
