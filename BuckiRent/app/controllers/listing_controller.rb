@@ -37,6 +37,29 @@ class ListingController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+  def message
+    @listing = Listing.find(params[:id])
+    @user = @listing.user
+    @message = Message.new
+  end
+
+  def post_message
+    user = User.find(params[:id])
+    @message = Message.new(message_params)
+
+    @message.user = user
+
+    if @message.save
+      redirect_to :action => 'list'
+    else
+      render :action => 'message'
+    end
+  end
+
+  def message_params
+    params.require(:message).permit(:subject, :message)
+  end
+
   def update
     @listing = Listing.find(params[:id])
 

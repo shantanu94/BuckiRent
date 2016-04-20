@@ -1,0 +1,12 @@
+<div class ="message">
+
+  <h1><%= @message.subject %>
+  <p><%= @message.message %>
+
+  <% if current_user == @message.user %>
+    <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}%></b>
+  <% end %>
+  
+</div>
+
+<%= link_to 'Back to Messages', {:action => 'list'} %>

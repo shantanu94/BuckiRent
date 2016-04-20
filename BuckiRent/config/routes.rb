@@ -15,13 +15,15 @@ Rails.application.routes.draw do
    get 'listing/edit'
    get 'listing/delete'
    get 'listing/update'
+   get 'listing/message'
 
+   post 'listing/post-message'
    post 'listing/create'
-
    patch 'listing/update'
 
-   resources :conversations, only: [:index, :show, :destroy]
-   resources :messages, only: [:new, :create]
+   get 'messages/list'
+   get 'messages/show'
+   get 'messages/delete'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
