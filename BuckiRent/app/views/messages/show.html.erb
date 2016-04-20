@@ -1,10 +1,12 @@
+<!-- Created by Griffin Solimini on 4/17 as the message show view -->
+
 <div class ="message">
 
   <h1><%= @message.subject %></h1>
   <p><%= @message.message %></p>
 
   <%= link_to 'Back to Messages', {:action => 'list'}, :class => 'btn btn-success btn-md' %>
-  
+
   <% if current_user == @message.user %>
     <%= link_to "Delete", {:action => 'delete', :id => @message.id, :class => 'btn btn-info btn-md'}%>
   <% end %>

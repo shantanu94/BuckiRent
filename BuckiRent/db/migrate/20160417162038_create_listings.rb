@@ -1,3 +1,5 @@
+# Created by Griffin Solimini on 4/17/16 to create the listing table
+
 class CreateListings < ActiveRecord::Migration
   def change
     create_table :listings do |t|

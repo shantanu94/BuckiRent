@@ -1,3 +1,5 @@
+# Created by Griffin Solimini on 4/19/16 to create the messages foreign keys
+
 class ForeignKeysMessages < ActiveRecord::Migration
   def change
     add_column :messages, :from_id, :integer

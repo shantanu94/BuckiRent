@@ -1,3 +1,7 @@
+# Created by Shantanu on 4/15/16 as the routes file/index routes
+# Modified by Griffin Solimini on 4/17/16 and 4/19/16 to add routes for the
+# messages and listings views
+
 Rails.application.routes.draw do
 
   devise_for :users
