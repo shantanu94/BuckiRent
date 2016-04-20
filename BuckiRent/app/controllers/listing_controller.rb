@@ -1,3 +1,20 @@
+#
+#
+#
+#
+#
+#
+# Edited by Grant Stenroos on 04/18/16
+# Added basic address search functionality and advanced search functionality
+#
+# Edited by Grant Stenroos on 04/18/16
+# Removed basic address search functionality, added drop down stuff for bed/bath/rent search fields for exactly/under/over
+#
+#
+
+
+
+
 class ListingController < ApplicationController
 
   def list

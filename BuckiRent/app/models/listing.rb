@@ -1,3 +1,16 @@
+#
+#
+#
+#
+#
+#
+# Edited by Grant Stenroos on 04/18/16
+# Added basic address search functionality and advanced search functionality
+#
+# Edited by Grant Stenroos on 04/18/16
+# Removed basic address search functionality, added drop down stuff for bed/bath/rent search fields for exactly/under/over
+#
+#
 class Listing < ActiveRecord::Base
   has_attached_file :photo
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
@@ -52,12 +65,7 @@ class Listing < ActiveRecord::Base
       if query != ""
         query += " AND "
       end
-      puts()
-      puts()
-      puts("test")
-      puts(bath_drop_down)
-      puts()
-      puts()
+
       if bath_drop_down == 'exactly'
         query += "bath = " + bath.to_s
       elsif bath_drop_down == 'under'
