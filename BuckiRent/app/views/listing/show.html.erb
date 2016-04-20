@@ -1,0 +1,29 @@
+<div class ="listing">
+  <table>
+    <tr>
+      <td>
+        <%= image_tag @listing.photo.url %>
+      </td>
+      <td>
+        <h3><%= link_to @listing.heading, {:action => 'show', :id => @listing.id} -%></h3>
+        <p><%= @listing.description %></p>
+        Listing Details:
+        <p>
+          Address: <%= @listing.address %><br />
+          Area: <%= @listing.area %><br />
+          Bed/Bath: <%= @listing.bed %>/<%=@listing.bath%><br />
+          Rent: $<%= @listing.rent %>/month<br />
+          Owner: <%= @listing.user.email %><br />
+        </p>
+      </td>
+  </tr>
+  </table>
+  <br />
+
+  <% if current_user == @listing.user %>
+    <b> <%= link_to 'Edit', {:action => 'edit', :id => @listing.id} %></b>
+    <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}%></b>
+  <% end %>
+</div>
+
+<%= link_to 'Back to Listings', {:action => 'list'} %>

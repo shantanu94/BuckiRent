@@ -1,0 +1,53 @@
+<h1>Edit Listing</h1>
+
+<%= form_for @listing, :url => {:action => "update", :id =>@listing},
+                                :html => {:multipart => true} do |f| %>
+  <table>
+    <tr>
+      <td>Heading: </td>
+      <td><%= f.text_field :heading %></td>
+    </tr>
+
+    <tr>
+      <td>Address: </td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+
+    <tr>
+      <td>Area: </td>
+      <td><%= f.text_field :area %></td>
+    </tr>
+
+    <tr>
+      <td>Bed: </td>
+      <td><%= f.text_field :bed %></td>
+    </tr>
+
+    <tr>
+      <td>Bath: </td>
+      <td><%= f.text_field :bath %></td>
+    </tr>
+
+    <tr>
+      <td>Rent: </td>
+      <td><%= f.text_field :rent %></td>
+    </tr>
+
+    <tr>
+      <td>Description: </td>
+      <td><%= f.text_area :description %></td>
+    </tr>
+
+    <tr>
+      <td>Image: </td>
+      <td><%= f.file_field :photo %></td>
+    </tr>
+  </table>
+
+  <br />
+
+  <%= f.submit "Save Changes" %>
+
+<% end %>
+
+<%= link_to 'Back', {:action => 'list' } %>
