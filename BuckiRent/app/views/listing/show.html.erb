@@ -5,7 +5,7 @@
         <%= image_tag @listing.photo.url %>
       </td>
       <td>
-        <h3><%= link_to @listing.heading, {:action => 'show', :id => @listing.id} -%></h3>
+        <h3><%= @listing.heading %></h3>
         <p><%= @listing.description %></p>
         Listing Details:
         <p>

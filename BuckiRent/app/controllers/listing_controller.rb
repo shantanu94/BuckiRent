@@ -2,10 +2,8 @@ class ListingController < ApplicationController
 
   def list
 
-    #@listings = Listing.search(params[:search])
     @listings = Listing.advancedSearch(params[:search_heading], params[:search_description], params[:search_address],
                                        params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent])
-
   end
 
   def mylist
@@ -37,6 +35,29 @@ class ListingController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:id])
+  end
+
+  def message
+    @listing = Listing.find(params[:id])
+    @user = @listing.user
+    @message = Message.new
+  end
+
+  def post_message
+    user = User.find(params[:id])
+    @message = Message.new(message_params)
+
+    @message.user = user
+
+    if @message.save
+      redirect_to :action => 'list'
+    else
+      render :action => 'message'
+    end
+  end
+
+  def message_params
+    params.require(:message).permit(:subject, :message)
   end
 
   def update

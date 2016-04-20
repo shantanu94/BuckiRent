@@ -3,14 +3,6 @@ class Listing < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   belongs_to :user
 
-  def self.search(query)
-    if query != nil then
-      where("address like ?", "%#{query}%")
-    else
-      having("id > 0").group('id')
-    end
-  end
-
   def self.advancedSearch(heading, description, address, area, bed, bath, rent)
 
     if(heading == nil && description == nil && address == nil && area == nil && bed == nil && bath == nil && rent == nil)

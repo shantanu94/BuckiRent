@@ -1,0 +1,7 @@
+<h1>Your Messages</h1>
+
+<ul>
+  <% @messages.each do |m| %>
+    <li><%= link_to m.subject, {:action => 'show', :id => m.id} -%></li>
+  <% end %>
+</ul>
