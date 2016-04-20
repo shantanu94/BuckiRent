@@ -1,3 +1,16 @@
+<!--
+
+
+
+
+
+
+
+
+
+ Edited by Phillip Loveland on 04/19/16
+ Added Google Maps feature, changed some layout
+-->
 <div class ="listing">
   <table>
     <tr>
@@ -5,6 +18,31 @@
         <%= image_tag @listing.photo.url %>
       </td>
       <td>
+      	<div id="map"></div>
+      	<script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40, lng: -83.015},
+          zoom: 14
+        });
+        
+        var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({'address': '<%= @listing.address %>'}, function(results, status) {
+		    if (status === google.maps.GeocoderStatus.OK) {
+		      var marker = new google.maps.Marker({
+		        map: map,
+		        position: results[0].geometry.location
+		      });
+		    } else {
+		      alert('Geocode was not successful for the following reason: ' + status);
+		    }
+		 });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+
         <h3><%= @listing.heading %></h3>
         <p><%= @listing.description %></p>
         Listing Details:
