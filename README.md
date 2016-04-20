@@ -15,7 +15,7 @@ Grant Stenroos - Implemented all listing search functionality. Also assisted in 
 
 Griffin Solimini - Implemented the listings and messages models, views, and controllers basic functionality like list, add, update, delete, etc.
 
-Phillip Loveland - Implemented Google Maps feature. Solved some layout bugs.
+Phillip Loveland - Implemented Google Maps feature. Solved some layout bugs. Created seed file.
 
 Shantanu Bhardwaj - Created the main page and set up all routes and links to the rest of the site. Created the navbar and logo featured on the navbar. Fixed messages page layout.
 
@@ -31,11 +31,7 @@ The app starts with main/index, and works through the cycle of views and control
 ## To execute application:
 --------------------------
 The website is a renting app for students around OSU.
-The graders will need to add some test data as follows:
-1. Create an account as owner1
-2. Add multiple lisitings as owner along with 1 .jpg
-   pic for each listing
-** Repeat this as many times to create several listings 	by several owners as test data.
+Please run "rake db:setup" to create the database.
 
 Once the test data is present the home page displays up to 4 of the featured listings.
 
