@@ -7,11 +7,14 @@
 		<% end %>
 	<br/>
 	<br>
+	<h2>Featured Listings:</h2>
+	<br>
 	<% @listings.each do |l| %>
-		<div class="col-md-4" >
+	<div class="container-fluid">
 			<a class="thumbnail" >
 				<%= image_tag l.photo.url, :class => "img-rounded"%>
 				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => l.id }, :class => "btn btn-danger btn-md"%>
+				<br>
 			</a>
 		</div>
 	<%end%>
