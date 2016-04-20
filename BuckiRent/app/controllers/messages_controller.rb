@@ -7,8 +7,11 @@ class MessagesController < ApplicationController
   	end
 
   	def create
-	    recipient = User.find_by(email: params[:to])
-	    conversation = current_user.send_message(recipient, params[:message][:body], params[:message][:subject]).conversation
+	    #recipient = User.find_by(:email => params[:to])
+			recipient = User.find_by(:email => "gstenroos@gmail.com")
+
+			conversation = current_user.send_message(recipient, params[:message][:body], params[:message][:subject]).conversation
+
 	    flash[:success] = "Message has been sent!"
 	    redirect_to conversation_path(conversation)
   	end
