@@ -26,22 +26,3 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
-
-Overall Manager:
-Implementation Manager:
-Testing Manager:
-Documentation Manager: Kamari Wright
-
-Who did what?
--------------
-Kamari Wright -- Added CSS and UI to the application. I added and shifted around HTML and Ruby to be able to better fit the UI. I also
-worked on fixing some of the Javascript issues.
-
-How this Code Works?
--------------------
--- The application is hosted in the app folder, where its divided into assets, controllers, helpers, mailers, models, and views.
-In this application, we focused on using the assets folder to host the CSS that we needed in the application, and the controllers
-folder to connect to the database which is held in the `db` folder. The views folder holds the HTML files that the user interacts
-with and is able to see the data on the houses that they are interested in. The config folder holds all of the configurations
-of the various gems that we used in the application. The app starts with main/index, and works through the cycle of views and
-controllers that the user can interact with. 
