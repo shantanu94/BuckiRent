@@ -1,53 +1,83 @@
-<h1>Edit Listing</h1>
+<%page_header 'Edit Listing'%>
 
 <%= form_for @listing, :url => {:action => "update", :id =>@listing},
                                 :html => {:multipart => true} do |f| %>
-  <table>
-    <tr>
-      <td>Heading: </td>
-      <td><%= f.text_field :heading %></td>
-    </tr>
+  <div class="form-group">
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Heading: </label>
+      </div>
+      <div class = "col-md-2">
+        <%= f.text_field :heading %>
+      </div>
+    </div>
+    <div class="row">
+      <div class = "col-md-1">
+        <label>Address: </label>
+      </div>
+      <div class = "col-md-2">
+        <td><%= f.text_field :address %></td>
+      </div>
+    </div>
 
-    <tr>
-      <td>Address: </td>
-      <td><%= f.text_field :address %></td>
-    </tr>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Area: </label>
+      </div>
+      <div class = "col-md-2">
+        <td><%= f.text_field :area %></td>
+      </div>
+    </div>
 
-    <tr>
-      <td>Area: </td>
-      <td><%= f.text_field :area %></td>
-    </tr>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Bed: </label>
+      </div>
+      <div class = "col-md-2">
+        <td><%= f.text_field :bed %></td>
+      </div>
+    </div>
 
-    <tr>
-      <td>Bed: </td>
-      <td><%= f.text_field :bed %></td>
-    </tr>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Bath: </label>
+      </div>
+      <div class = "col-md-2">
+        <%= f.text_field :bath %>
+      </div>
+    </div>
 
-    <tr>
-      <td>Bath: </td>
-      <td><%= f.text_field :bath %></td>
-    </tr>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Rent: </label>
+      </div>
+      <div class = "col-md-2">
+        <%= f.text_field :rent %>
+      </div>
+    </div>
 
-    <tr>
-      <td>Rent: </td>
-      <td><%= f.text_field :rent %></td>
-    </tr>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Description: </label>
+      </div>
+      <div class ="col-md-2">
+        <%= f.text_area :description %>
+      </div>
+    </div>
 
-    <tr>
-      <td>Description: </td>
-      <td><%= f.text_area :description %></td>
-    </tr>
-
-    <tr>
-      <td>Image: </td>
-      <td><%= f.file_field :photo %></td>
-    </tr>
-  </table>
+    <div class = "row">
+      <div class = "col-md-1">
+        <label>Image: </label>
+      </div>
+      <div class = "col-md-2">
+        <td><%= f.file_field :photo %></td>
+      </div>
+    </div>
+  </div>
 
   <br />
 
-  <%= f.submit "Save Changes" %>
+  <%= link_to '<- Back', {:action => 'list' }, :class => 'btn btn-success btn-sm' %>
+  <%= f.submit "Save Changes", :class => 'btn btn-info btn-sm' %>
 
 <% end %>
-
-<%= link_to 'Back', {:action => 'list' } %>

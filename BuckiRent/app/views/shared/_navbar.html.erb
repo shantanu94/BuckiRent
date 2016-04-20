@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container-fluid" style="background-color:white;">
     <div class="navbar-header">
       <a href="/">
         <%= image_tag "logo.png", :class => "logo" %>
@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <% if user_signed_in? %>
-          <li>Signed in as: <%= current_user.email %></li>
+          <li style="margin-top:15px;">Signed in as: <%= current_user.email %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           <%#<li><%= link_to "Messages", conversations_path %><%#</li>%>
         <% else %>

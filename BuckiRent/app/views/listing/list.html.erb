@@ -1,13 +1,17 @@
-<h1>Listings</h1>
 
-<button data-toggle="collapse" data-target="#advanced_search_collapse">Show/Hide Search Options</button>
+<%page_header "Listings" %>
+
+<button data-toggle="collapse" data-target="#advanced_search_collapse" class = "btn btn-default">Show/Hide Search Options</button>
+<% if user_signed_in? %>
+    <%= link_to "Add A Listing", {:action => 'new'}, :class => 'btn btn-default' %>
+<% end %>
 <div id="advanced_search_collapse" class="collapse"><br/>
 
   <%= form_tag(nil, :method => "get", id: "advanced_search_form") do %>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Title' %>
+        <div class="col-md-2">
+          <%= label_tag 'Title:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_heading, params[:search_heading], placeholder: "Title" %><br/>
@@ -15,8 +19,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Description' %>
+        <div class="col-md-2">
+          <%= label_tag 'Description:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_description, params[:search_description], placeholder: "Description" %><br/>
@@ -24,8 +28,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Address' %>
+        <div class="col-md-2">
+          <%= label_tag 'Address:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_address, params[:search_address], placeholder: "Address" %><br/>
@@ -33,8 +37,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Area' %>
+        <div class="col-md-2">
+          <%= label_tag 'Area:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_area, params[:search_area], placeholder: "Area" %><br/>
@@ -42,8 +46,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Beds' %>
+        <div class="col-md-2">
+          <%= label_tag 'Beds:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_bed, params[:search_bed], placeholder: "Beds" %><br/>
@@ -51,8 +55,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Baths' %>
+        <div class="col-md-2">
+          <%= label_tag 'Baths:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_bath, params[:search_bath], placeholder: "Baths" %><br/>
@@ -60,8 +64,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
-          <%= label_tag 'Rent' %>
+        <div class="col-md-2">
+          <%= label_tag 'Rent:' %>
         </div>
         <div class="col-md-2">
           <%= text_field_tag :search_rent, params[:search_rent], placeholder: "Rent" %><br/>
@@ -69,44 +73,35 @@
       </div>
 
 
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-info btn-sm" %>
   <% end %>
 
 </div>
 
 <% if @listings.blank? %>
     <p>There are no listings currently in the system.</p>
-
 <% else %>
 
-    <hr>
     <% @listings.each do |l| %>
         <div class="listing">
-          <table>
-            <tr>
-              <td>
-                <%= image_tag l.photo.url %>
-              </td>
-              <td>
-                <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
-                <p><%= l.description %></p>
-                Listing Details:
-                <p>
-                  Address: <%= l.address %><br/>
-                  Area: <%= l.area %><br/>
-                  Bed/Bath: <%= l.bed %>/<%= l.bath %><br/>
-                  Rent: $<%= l.rent %>/month<br/>
-                  Owner: <%= l.user.email %><br/>
-                  <%= link_to 'Send Message', {:action => 'message', :id => l.id}, class: 'btn btn-default btn-sm' %>
-                </p>
-              </td>
-            </tr>
-          </table>
+          <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
+          <div class = "row">
+            <div class = "col-md-3">
+              <%= image_tag l.photo.url %>
+            </div>
+            <div class = "col-md-9">
+
+              <p><%= l.description %></p>
+              <p><u>Listing Details:</u></p>
+              <p><strong>Address:</strong> <%= l.address %></p>
+              <p><strong>Area:</strong> <%= l.area %></p>
+              <p><strong>Bed/Bath:</strong> <%= l.bed %>/<%= l.bath %></p>
+              <p><strong>Rent:</strong> $<%= l.rent %>/month</p>
+              <p><strong>Owner:</strong> <%= l.user.email %></p>
+              <%= link_to 'Send Message', {:action => 'message', :id => l.id}, class: 'btn btn-info btn-sm' %>
+            </div>
+          </div>
         </div>
         <hr>
     <% end %>
-<% end %>
-
-<% if user_signed_in? %>
-    <p><%= link_to "Add A Listing", {:action => 'new'} %></p>
 <% end %>

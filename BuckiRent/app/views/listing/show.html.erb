@@ -1,29 +1,27 @@
 <div class ="listing">
-  <table>
-    <tr>
-      <td>
+  <% page_header @listing.heading %>
+  <div class="row">
+    <div class = "col-md-3">
         <%= image_tag @listing.photo.url %>
-      </td>
-      <td>
-        <h3><%= @listing.heading %></h3>
-        <p><%= @listing.description %></p>
-        Listing Details:
-        <p>
-          Address: <%= @listing.address %><br />
-          Area: <%= @listing.area %><br />
-          Bed/Bath: <%= @listing.bed %>/<%=@listing.bath%><br />
-          Rent: $<%= @listing.rent %>/month<br />
-          Owner: <%= @listing.user.email %><br />
-        </p>
-      </td>
-  </tr>
-  </table>
+    </div>
+    <div class = "col-md-9">
+        <p> <%= @listing.description %></p>
+
+        <p><u>Listing Details:</u></p>
+          <p><strong>Address:</strong> <%= @listing.address %></p>
+          <p><strong>Area:</strong> <%= @listing.area %></p>
+          <p><strong>Bed/Bath:</strong> <%= @listing.bed %>/<%=@listing.bath%></p>
+          <p><strong>Rent:</strong> $<%= @listing.rent %>/month</p>
+          <p><strong>Owner:</strong> <%= @listing.user.email %></p>
+          <% if current_user == @listing.user %>
+            <b> <%= link_to 'Edit', {:action => 'edit', :id => @listing.id}, :class => 'btn btn-info btn-sm' %></b>
+            <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}, :class => 'btn btn-info btn-sm'%></b>
+          <% end %>
+    </div>
+  </div>
   <br />
 
-  <% if current_user == @listing.user %>
-    <b> <%= link_to 'Edit', {:action => 'edit', :id => @listing.id} %></b>
-    <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}%></b>
-  <% end %>
+
 </div>
 
-<%= link_to 'Back to Listings', {:action => 'list'} %>
+<%= link_to '<- Back to Listings', {:action => 'list'}, :class => "btn btn-success" %>

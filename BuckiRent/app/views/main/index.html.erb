@@ -1,44 +1,47 @@
-
-<body>
-
 	<% page_header "Welcome!" %>
-	<h3>Browse properties available for rent all around Ohio State's Off-Campus area.</h3>
-
-	<%= link_to "All Listings", listing_list_path %>
-	<% if user_signed_in? %>
-		<%= link_to "My Listings", listing_mylist_path %>
-	<% end %>
-
+		<%= link_to "All Listings", listing_list_path, :class => "btn btn-default btn-md"%>
+		<% if user_signed_in? %>
+			<%= link_to "My Listings", listing_mylist_path, :class => "btn btn-default btn-md"%>
+		<% end %>
+	<br/>
+	<br>
 	<div class="row">
-		<div class="col-md-4" >		
+		<div class = "col-md-2">
+		</div>
+		<div class="col-md-4" >
 			<a class="thumbnail" >
 				<%= image_tag "house1.jpg", :class => "img-rounded"%>
-				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-danger btn-md"%>
 			</a>
 		</div>
-	
-		<div class="col-md-4" >
-			<a class="thumbnail" >		
-				<%= image_tag "house2.jpg", :class => "img-rounded"%>
-				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
-			</a>
-		</div>
-	</div> <br> <br>
 
-	<div class="row">
-		<div class="col-md-4" >		
+		<div class="col-md-4" >
+			<a class="thumbnail" >
+				<%= image_tag "house2.jpg", :class => "img-rounded"%>
+				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-danger btn-md"%>
+			</a>
+		</div>
+		<div class = "col-md-2">
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="row make-room">
+		<div class = "col-md-2">
+		</div>
+		<div class="col-md-4" >
 			<a class="thumbnail" >
 				<%= image_tag "house3.jpg", :class => "img-rounded"%>
-				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-danger btn-md"%>
 			</a>
 		</div>
 
 		<div class="col-md-4">
-			<a class="thumbnail" >	
+			<a class="thumbnail" >
 				<%= image_tag "house4.jpg", :class => "img-rounded"%>
-				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-info btn-md"%>
+				<%= link_to "View Property", {:controller => "listing", :action => 'show', :id => 1 }, :class => "btn btn-danger btn-md"%>
 			</a>
 		</div>
-	</div> <br> <br>
-
-</body>
+		<div class = "col-md-2">
+		</div>
+	</div>

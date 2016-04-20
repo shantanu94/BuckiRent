@@ -1,34 +1,30 @@
+<%page_header 'My Listings'%>
+
+<% if user_signed_in? %>
+  <%= link_to "Add A Listing", {:action => 'new' }, :class => 'btn btn-default btn-md'%>
+<% end %>
+
 <% if @listings.blank? %>
   <p>There are no listings currently in the system registered under this user.</p>
 <% else %>
-  <h1>My Listings</h1>
-  <hr>
   <% @listings.each do |l| %>
     <div class ="listing">
-      <table>
-        <tr>
-          <td>
+      <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
+      <div class = "row">
+          <div class="col-md-3">
             <%= image_tag l.photo.url %>
-          </td>
-          <td>
-            <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
+          </div>
+          <div class="col-md-9">
             <p><%= l.description %></p>
-            Listing Details:
-            <p>
-              Address: <%= l.address %><br />
-              Area: <%= l.area %><br />
-              Bed/Bath: <%= l.bed %>/<%=l.bath%><br />
-              Rent: $<%= l.rent %>/month<br />
-              Owner: <%= l.user.email %><br />
-            </p>
-          </td>
-        </tr>
-      </table>
+            <p><u>Listing Details:</u></p>
+            <p><strong>Address:</strong> <%= l.address %></p>
+            <p><strong>Area:</strong> <%= l.area %></p>
+            <p><strong>Bed/Bath:</strong> <%= l.bed %>/<%=l.bath%></p>
+            <p><strong>Rent:</strong> $<%= l.rent %>/month</p>
+            <p><strong>Owner:</strong> <%= l.user.email %></p>
+          </div>
+      </div>
     </div>
     <hr>
   <% end %>
-<% end %>
-
-<% if user_signed_in? %>
-  <p><%= link_to "Add A Listing", {:action => 'new' }%></p>
 <% end %>

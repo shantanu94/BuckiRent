@@ -17,12 +17,14 @@
   <% if flash[:alert] %>
           <p class="alert"><%= flash[:alert] %></p>
   <% end %>
-  
+
   <div class="page-header">
     <h1><%= yield :page_header %></h1>
   </div>
 
 	<%= yield %>
+  
+  <%= render 'shared/footer' %>
 	</div>
 
 </body>
