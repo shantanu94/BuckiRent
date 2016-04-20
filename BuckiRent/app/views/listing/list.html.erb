@@ -9,6 +9,9 @@
 
  Edited by Kamari Wright on 4/19/16
  Added Page Header, restructured HTML for better UI, added classes to link_to
+ 
+ Edited by Phillip Loveland on 04/20/16
+ Fixed Google Map not showing. Added labels to pins on map.
 
 -->
 <%page_header "Listings" %>
@@ -19,7 +22,7 @@
 <% end %>
 <br>
 <br>
-<div id="advanced_search_collapse" class="collapse">
+<div id="advanced_search_collapse" class="collapse in" style="" aria-expanded="true">
 <div class = "row">
   <div class = "col-md-8">
 
@@ -99,9 +102,36 @@
     <%= submit_tag "Search", :name => nil, :class => "btn btn-info btn-sm" %>
   <% end %>
 </div>
+<div class = "col-md-4">
+  <div id = "map"></div>
+</div>
+</div>
+</div>
 
-</div>
-</div>
+<script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40, lng: -83.015},
+          zoom: 13
+        });
+
+        var geocoder = new google.maps.Geocoder();
+        <% @listings.each do |la| %>
+    geocoder.geocode({'address': '<%= la.address %>'}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: '<%=la.heading%>'
+          });
+        }
+     });
+        <% end %>
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
 
 <% if @allListings.blank? %>
 
@@ -112,8 +142,7 @@
     <br><p>No listings matched your search.</p>
 
 <% else %>
-
-    <% @listings.each do |l| %>
+	<% @listings.each do |l| %>
         <div class="listing">
           <h3><%= link_to l.heading, {:action => 'show', :id => l.id} -%></h3>
           <div class = "row">
