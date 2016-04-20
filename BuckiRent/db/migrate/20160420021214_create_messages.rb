@@ -1,3 +1,5 @@
+# Created by Griffin Solimini on 4/19/16 to create the messages table
+
 class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|

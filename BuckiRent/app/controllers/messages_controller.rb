@@ -1,3 +1,5 @@
+# Created by Griffin Solimini on 4/17/16 as the Messages controller
+
 class MessagesController < ApplicationController
   def list
     @messages = current_user.messages
