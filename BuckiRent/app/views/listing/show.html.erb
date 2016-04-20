@@ -16,6 +16,7 @@
           <p><strong>Bed/Bath:</strong> <%= @listing.bed %>/<%=@listing.bath%></p>
           <p><strong>Rent:</strong> $<%= @listing.rent %>/month</p>
           <p><strong>Owner:</strong> <%= @listing.user.email %></p>
+          <%= link_to 'Send Message', {:action => 'message', :id => @listing.id}, :class => 'btn btn-info btn-sm' %>
           <% if current_user == @listing.user %>
             <b> <%= link_to 'Edit', {:action => 'edit', :id => @listing.id}, :class => 'btn btn-info btn-sm' %></b>
             <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}, :class => 'btn btn-info btn-sm'%></b>
