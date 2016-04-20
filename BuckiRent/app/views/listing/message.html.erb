@@ -1,21 +1,22 @@
-<% page_header "Start Conversation" %>
+<% page_header "Contact Owner" %>
 
 <%= form_for @message, url: {action: "post_message", id: @user} do |f| %>
+		<div>
+			<p>Please leave a detailed message along with your contact information!</p>
+		</div>
 		<table>
 			<div class='form-group'>
-	    	<tr>
-	      	<td>Subject: </td>
-	      	<td><%= f.text_field :subject, class: 'form-control' %></td>
-	    	</tr>
-
-	    	<tr>
-	      	<td>Message: </td>
-	      	<td><%= f.text_area :message, class: 'form-control' %></td>
-	    	</tr>
+		    	<tr>
+			      	<td>Subject: </td>
+			      	<td><%= f.text_field :subject, class: 'form-control' %></td>
+		    	</tr>
+		    	<tr>
+			      	<td>Message: </td>
+			      	<td><%= f.text_area :message, class: 'form-control' %></td>
+		    	</tr>
 			</div>
 	  </table>
-
 		<%= f.submit "Send", class: 'btn btn-primary' %>
 <% end %>
-
-<%= link_to 'Back', {:action => 'list'} %>
+<br>
+<%= link_to 'Back', {:action => 'list'}, class: 'btn btn-default' %>
