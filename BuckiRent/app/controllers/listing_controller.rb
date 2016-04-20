@@ -2,8 +2,9 @@ class ListingController < ApplicationController
 
   def list
 
+    @allListings = Listing.all
     @listings = Listing.advancedSearch(params[:search_heading], params[:search_description], params[:search_address],
-                                       params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent])
+                                       params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent], params[:bed_drop_down], params[:bath_drop_down], params[:rent_drop_down])
   end
 
   def mylist
