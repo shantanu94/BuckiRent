@@ -1,86 +1,138 @@
+<!--Edited by Grant Stenroos on 04/18/16
+ Added basic address search functionality and advanced search functionality
 
+ Edited by Grant Stenroos on 04/18/16
+ Removed basic address search functionality, added drop down stuff for bed/bath/rent search fields for exactly/under/over
+
+ Edited by Phillip Loveland on 04/20/16
+ Added Google Maps feature, changed some layout
+-->
 <%page_header "Listings" %>
 
 <button data-toggle="collapse" data-target="#advanced_search_collapse" class = "btn btn-default">Show/Hide Search Options</button>
 <% if user_signed_in? %>
     <%= link_to "Add A Listing", {:action => 'new'}, :class => 'btn btn-default' %>
 <% end %>
-<div id="advanced_search_collapse" class="collapse"><br/>
+<br>
+<br>
+<div id="advanced_search_collapse" class="collapse">
+<div class = "row">
+  <div class = "col-md-8">
 
-  <%= form_tag(nil, :method => "get", id: "advanced_search_form") do %>
-
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Title:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_heading, params[:search_heading], placeholder: "Title" %><br/>
-        </div>
+<%= form_tag(nil, :method => "get", id: "advanced_search_form") do %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag 'Title:' %>
       </div>
-
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Description:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_description, params[:search_description], placeholder: "Description" %><br/>
-        </div>
+      <div class="col-md-2">
+        <%= text_field_tag :search_heading, params[:search_heading], placeholder: "Title" %><br/>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Address:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_address, params[:search_address], placeholder: "Address" %><br/>
-        </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag 'Description:' %>
       </div>
-
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Area:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_area, params[:search_area], placeholder: "Area" %><br/>
-        </div>
+      <div class="col-md-2">
+        <%= text_field_tag :search_description, params[:search_description], placeholder: "Description" %><br/>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Beds:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_bed, params[:search_bed], placeholder: "Beds" %><br/>
-        </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag 'Address:' %>
       </div>
-
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Baths:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_bath, params[:search_bath], placeholder: "Baths" %><br/>
-        </div>
+      <div class="col-md-2">
+        <%= text_field_tag :search_address, params[:search_address], placeholder: "Address" %><br/>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-2">
-          <%= label_tag 'Rent:' %>
-        </div>
-        <div class="col-md-2">
-          <%= text_field_tag :search_rent, params[:search_rent], placeholder: "Rent" %><br/>
-        </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag 'Area:' %>
       </div>
+      <div class="col-md-2">
+        <%= text_field_tag :search_area, params[:search_area], placeholder: "Area" %><br/>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag 'Beds:' %>
+      </div>
+      <div class="col-sm-4">
+        <%= text_field_tag :search_bed, params[:search_bed], placeholder: "Beds" %><br/>
+      </div>
+      <div class="col-sm-6">
+        <%= select_tag "bed_drop_down", options_for_select([['Exactly', 'exactly'], ['Under', 'under'], ['Over', 'over']], params[:bed_drop_down]) %>
+      </div>
+    </div>
 
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-info btn-sm" %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag 'Baths:' %>
+      </div>
+      <div class="col-sm-4">
+        <%= text_field_tag :search_bath, params[:search_bath], placeholder: "Baths" %><br/>
+      </div>
+      <div class="col-sm-6">
+        <%= select_tag "bath_drop_down", options_for_select([['Exactly', 'exactly'], ['Under', 'under'], ['Over', 'over']], params[:bath_drop_down]) %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag 'Rent:' %>
+      </div>
+      <div class="col-sm-4">
+        <%= text_field_tag :search_rent, params[:search_rent], placeholder: "Rent" %><br/>
+      </div>
+      <div class="col-sm-6">
+        <%= select_tag "rent_drop_down", options_for_select([['Exactly', 'exactly'], ['Under', 'under'], ['Over', 'over']], params[:rent_drop_down]) %>
+      </div>
+    </div>
+
+    <%= submit_tag "Search", :name => nil, :class => "btn btn-info btn-sm" %>
   <% end %>
-
+</div>
+<div class = "col-md-4">
+  <div id = "map"></div>
+</div>
+</div>
 </div>
 
-<% if @listings.blank? %>
-    <p>There are no listings currently in the system.</p>
+<% if @allListings.blank? %>
+
+    <br><p>There are no listings currently in the system.</p>
+
+<% elsif @listings.blank? %>
+
+    <br><p>No listings matched your search.</p>
+
 <% else %>
+<script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40, lng: -83.015},
+          zoom: 14
+        });
+
+        var geocoder = new google.maps.Geocoder();
+        <% @listings.each do |la| %>
+    geocoder.geocode({'address': '<%= la.address %>'}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        }
+     });
+        <% end %>
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
 
     <% @listings.each do |l| %>
         <div class="listing">

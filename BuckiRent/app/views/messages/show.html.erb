@@ -3,10 +3,10 @@
   <h1><%= @message.subject %></h1>
   <p><%= @message.message %></p>
 
+  <%= link_to 'Back to Messages', {:action => 'list'}, :class => 'btn btn-success btn-md' %>
+  
   <% if current_user == @message.user %>
-    <b> <%= link_to "Delete", {:action => 'delete', :id => @message.id}%></b>
+    <%= link_to "Delete", {:action => 'delete', :id => @message.id, :class => 'btn btn-info btn-md'}%>
   <% end %>
 
 </div>
-
-<%= link_to 'Back to Messages', {:action => 'list'} %>

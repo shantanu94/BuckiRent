@@ -1,9 +1,27 @@
+#
+#
+#
+#
+#
+#
+# Edited by Grant Stenroos on 04/18/16
+# Added basic address search functionality and advanced search functionality
+#
+# Edited by Grant Stenroos on 04/18/16
+# Removed basic address search functionality, added drop down stuff for bed/bath/rent search fields for exactly/under/over
+#
+#
+
+
+
+
 class ListingController < ApplicationController
 
   def list
 
+    @allListings = Listing.all
     @listings = Listing.advancedSearch(params[:search_heading], params[:search_description], params[:search_address],
-                                       params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent])
+                                       params[:search_area], params[:search_bed], params[:search_bath], params[:search_rent], params[:bed_drop_down], params[:bath_drop_down], params[:rent_drop_down])
   end
 
   def mylist

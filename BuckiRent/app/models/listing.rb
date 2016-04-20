@@ -1,11 +1,24 @@
+#
+#
+#
+#
+#
+#
+# Edited by Grant Stenroos on 04/18/16
+# Added basic address search functionality and advanced search functionality
+#
+# Edited by Grant Stenroos on 04/18/16
+# Removed basic address search functionality, added drop down stuff for bed/bath/rent search fields for exactly/under/over
+#
+#
 class Listing < ActiveRecord::Base
   has_attached_file :photo
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   belongs_to :user
 
-  def self.advancedSearch(heading, description, address, area, bed, bath, rent)
+  def self.advancedSearch(heading, description, address, area, bed, bath, rent, bed_drop_down, bath_drop_down, rent_drop_down)
 
-    if(heading == nil && description == nil && address == nil && area == nil && bed == nil && bath == nil && rent == nil)
+    if (heading == nil && description == nil && address == nil && area == nil && bed == nil && bath == nil && rent == nil)
       where("id > 0")
     end
 
@@ -39,24 +52,43 @@ class Listing < ActiveRecord::Base
       if query != ""
         query += " AND "
       end
-      query += "bed LIKE '%" + bed.to_s + "%'"
+      if bed_drop_down == "exactly"
+        query += "bed = " + bed.to_s
+      elsif bed_drop_down == "under"
+        query += "bed < " + bed.to_s
+      else
+        query += "bed > " + bed.to_s
+      end
     end
 
     if bath != "" then
       if query != ""
         query += " AND "
       end
-      query += "bath LIKE '%" + bath.to_s + "%'"
+
+      if bath_drop_down == 'exactly'
+        query += "bath = " + bath.to_s
+      elsif bath_drop_down == 'under'
+        query += "bath < " + bath.to_s
+      else
+        query += "bath > " + bath.to_s
+      end
     end
 
     if rent != "" then
       if query != ""
         query += " AND "
       end
-      query += "rent LIKE '%" + rent.to_s + "%'"
+      if rent_drop_down == 'exactly'
+        query += "rent = " + rent.to_s
+      elsif rent_drop_down == 'under'
+        query += "rent < " + rent.to_s
+      else
+        query += "rent > " + rent.to_s
+      end
     end
 
-    if(heading == nil && description == nil && address == nil && area == nil && bed == nil && bath == nil && rent == nil)
+    if (heading == nil && description == nil && address == nil && area == nil && bed == nil && bath == nil && rent == nil)
       where("id > 0")
     elsif query != ""
       where(query)

@@ -1,3 +1,11 @@
+/**
+ *
+ *
+ *
+ *
+ *   Edited by Phillip Loveland on 04/19/16
+ *   Added map styling
+ */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
@@ -33,4 +41,10 @@
 
 .make-room {
 	margin-bottom: 100px;
+}
+
+#map {
+  width: 250px;
+  height: 250px;
+  background-color: #CCC;
 }

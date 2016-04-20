@@ -1,10 +1,13 @@
+<!--Edited by Phillip Loveland on 04/19/16
+ Added Google Maps feature, changed some layout
+-->
 <div class ="listing">
   <% page_header @listing.heading %>
   <div class="row">
     <div class = "col-md-3">
         <%= image_tag @listing.photo.url %>
     </div>
-    <div class = "col-md-9">
+    <div class = "col-md-5">
         <p> <%= @listing.description %></p>
 
         <p><u>Listing Details:</u></p>
@@ -18,9 +21,34 @@
             <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}, :class => 'btn btn-info btn-sm'%></b>
           <% end %>
     </div>
+    <div class = "col-md-4">
+      <div id="map"></div>
+    </div>
   </div>
-  <br />
 
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40, lng: -83.015},
+          zoom: 14
+        });
+
+        var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({'address': '<%= @listing.address %>'}, function(results, status) {
+		    if (status === google.maps.GeocoderStatus.OK) {
+		      var marker = new google.maps.Marker({
+		        map: map,
+		        position: results[0].geometry.location
+		      });
+		    } else {
+		      alert('Geocode was not successful for the following reason: ' + status);
+		    }
+		 });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
 
 </div>
 
