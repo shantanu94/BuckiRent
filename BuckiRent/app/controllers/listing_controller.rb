@@ -89,7 +89,7 @@ class ListingController < ApplicationController
 
   def delete
     Listing.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => 'mylist'
   end
 
   def listing_params
