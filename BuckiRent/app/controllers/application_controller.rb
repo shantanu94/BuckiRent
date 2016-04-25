@@ -1,3 +1,6 @@
+# Edited by Shantanu Bhardwaj on 4/18/1
+# Added record not found and redirect conditions
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

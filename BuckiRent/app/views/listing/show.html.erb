@@ -7,6 +7,9 @@
 <!-- Edited by Kamari Wright on 4/19/16
 Added Page Header, restructured HTML for better UI, added classes to link_to -->
 
+<!-- Edited by Shantanu Bhardwaj on 4/24/16
+Removed message button, if owner is viewing their listing,and added link to 'mylist' -->
+
 <div class ="listing">
   <% page_header @listing.heading %>
   <div class="row">
@@ -22,8 +25,9 @@ Added Page Header, restructured HTML for better UI, added classes to link_to -->
           <p><strong>Bed/Bath:</strong> <%= @listing.bed %>/<%=@listing.bath%></p>
           <p><strong>Rent:</strong> $<%= @listing.rent %>/month</p>
           <p><strong>Owner:</strong> <%= @listing.user.email %></p>
-          <%= link_to 'Send Message', {:action => 'message', :id => @listing.id}, :class => 'btn btn-info btn-sm' %>
-          <% if current_user == @listing.user %>
+          <% if current_user != @listing.user %>
+            <%= link_to 'Send Message', {:action => 'message', :id => @listing.id}, :class => 'btn btn-info btn-sm' %>
+          <% else %>
             <b> <%= link_to 'Edit', {:action => 'edit', :id => @listing.id}, :class => 'btn btn-info btn-sm' %></b>
             <b> <%= link_to "Delete", {:action => 'delete', :id => @listing.id}, :class => 'btn btn-info btn-sm'%></b>
           <% end %>
@@ -55,4 +59,8 @@ Added Page Header, restructured HTML for better UI, added classes to link_to -->
         async defer></script>
 </div>
 
-<%= link_to '<- Back to Listings', {:action => 'list'}, :class => "btn btn-success" %>
+<% if current_user != @listing.user %>
+  <%= link_to '<- Back to Listings', {:action => 'list'}, :class => "btn btn-success" %>
+  <% else %>
+    <%= link_to '<- Back to My Listings', {:action => 'mylist'}, :class => "btn btn-success" %>
+  <%end%>
