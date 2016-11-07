@@ -1,26 +1,3 @@
-# Project 6
-### Ruby on Rails Project
-
-### Roles
-* Overall Project Manager: Grant Stenroos
-* Coding Manager: Kamari Wright
-* Testing Manager: Shantanu Bhardwaj
-* Documentation: Phillip Loveland
-
-### Contributions
-Please list who did what for each part of the project.
-Also list if people worked together (pair programmed) on a particular section.
-
-Grant Stenroos - Implemented all listing search functionality. Also assisted in searching for a bug in the messaging system.
-
-Griffin Solimini - Implemented the listings and messages models, views, and controllers basic functionality like list, add, update, delete, etc.
-
-Phillip Loveland - Implemented Google Maps feature. Solved some layout bugs. Created seed file.
-
-Shantanu Bhardwaj - Created the main page and set up all routes and links to the rest of the site. Created the navbar and logo featured on the navbar. Fixed messages page layout.
-
-Kamari Wright -- Added CSS and UI to the application. I added and shifted around HTML and Ruby to be able to better fit the UI. I also worked on fixing some of the Javascript issues.
-
 ###How this Code Works?
 -----------------------
 The application is hosted in the app folder, where its divided into assets, controllers, helpers, mailers, models, and views.
